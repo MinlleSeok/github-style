@@ -11,12 +11,14 @@
             <a aria-current="page" class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="{{ .Site.BaseURL }}">
                 Overview
             </a>
-            <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="{{ absURL "posts/" }}">
-                Posts
+            {{ range $name, $value := .Site.Taxonomies.categories }}
+            <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 " href="{{ absURL $name }}/">
+                {{ $name }}
                 <span class="Counter hide-lg hide-md hide-sm">
                     {{ $section_count}}
                 </span>
             </a>
+            {{ end }}
             <a class="UnderlineNav-item mr-0 mr-md-1 mr-lg-3 selected" href="{{ absURL "about/" }}">
                 About
             </a>
